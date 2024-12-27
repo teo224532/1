@@ -23,13 +23,8 @@ jobs:
       
       - name: Configure Chrome Remote Desktop
         run: |
-           & "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AanRRrvNC4jCzaha9XDa7ZcLg5wW5FQnV4U1UhA0UP-nXscZCH4xjJ5wtNhedu-jrx2q3Q" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$Env:COMPUTERNAME
-           
-      - name: Send PIN and Enter
+           & "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AanRRrvNC4jCzaha9XDa7ZcLg5wW5FQnV4U1UhA0UP-nXscZCH4xjJ5wtNhedu-jrx2q3Q" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name="$Env:COMPUTERNAME" --pin="111111"
+      - name: Wait for Chrome Remote Desktop Service to start
         run: |
-          Add-Type -AssemblyName System.Windows.Forms
-          Start-Sleep -Seconds 10 # Chờ cửa sổ cấu hình Chrome Remote Desktop xuất hiện
-          
-          [System.Windows.Forms.SendKeys]::SendWait("111111")
-          Start-Sleep -Seconds 1 # Chờ một chút trước khi nhấn Enter
-          [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
+          Start-Sleep -Seconds 30
+          Get-Service "chromeremotedesktop" | Where-Object {$_.Status -eq "Running"}
