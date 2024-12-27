@@ -23,5 +23,5 @@ jobs:
       
       - name: Configure Chrome Remote Desktop
         run: |
-           $command = '"%PROGRAMFILES(X86)%\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AanRRru3i9tNffLIzVmx_A_GDi4NV8EmQSRbxzzBANueIZpvesVrQK4RLB36NZmhOlXHXQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=%COMPUTERNAME%'
+           $command = '"%PROGRAMFILES(X86)%\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code=""4/0AanRRrury7QN5ccUxxrsfhbgm8C7DajlADBrMGFaWL4tkBWjuASMUmag-kZo41iYDlISKA"" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=%COMPUTERNAME%'
            Invoke-Expression $command
